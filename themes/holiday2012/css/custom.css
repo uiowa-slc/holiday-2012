@@ -124,20 +124,20 @@ body {
 }
 
 .card-form-container{
-	background-image: url('../images/globe1_outside_preview.png');
+	/*background-image: url('../images/globe1_outside_preview.png'); */
 	background-repeat: no-repeat;
 }
 
 .card-form-container.globe1-chooser{
-	background-image: url('../images/globe1_outside_preview.png');	
+	/*background-image: url('../images/globe1_outside_preview.png');*/
 }
 
 .card-form-container.globe2-chooser{
-	background-image: url('../images/globe2_outside_preview.png');	
+	/*background-image: url('../images/globe2_outside_preview.png');*/
 }
 
 .card-form-container.globe3-chooser{
-	background-image: url('../images/globe3_outside_preview.png');	
+	/*background-image: url('../images/globe3_outside_preview.png');*/
 }
 
 
@@ -221,4 +221,46 @@ body {
 	max-width: 100%;
 }
 
-  
+
+/* User Card Template */
+
+.card.custom {
+	position:relative;
+	
+}
+.custom-card-text {
+
+	position: absolute;
+	font-size: 23px;
+	font-family: 'Helvetica','Arial',sans;
+	height: 100%;
+	margin: auto;
+	width: 96%;
+	padding: 2%;
+	
+}
+
+.custom-card-text p.message{
+	margin-top: 65%;
+	background: rgba(255,255,255,0.8);
+	padding: 3px;
+	border: 1px #333;
+	
+}
+
+
+.custom-card-text p{
+	text-align: center;
+	
+}
+
+.make-splash {
+	position: fixed;
+	left: 0;
+	z-index: 99;
+}
+
+.make-splash.unopened {
+	visibility: hidden;
+	
+}

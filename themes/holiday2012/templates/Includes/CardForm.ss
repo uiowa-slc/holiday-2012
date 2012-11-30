@@ -1,8 +1,8 @@
 <form class="inside-form" $FormAttributes >
 				<div class="row-fluid card-form-container">
-					<div class="span6">
+					<div class="span6  hidden-phone">
 						<div class="front-creator">
-						
+						<img class="preview-outside-image" src="{$ThemeDir}/images/globe1_outside_preview.png" />
 
 						
 						</div>
@@ -19,7 +19,7 @@
 							
 							 <fieldset>
 						
-						        <legend>Fill out the following details:</legend>
+						        <!--<legend>Fill out the following details:</legend>-->
 						        $Fields.dataFieldByName(SecurityID)      
 						        $Fields.dataFieldByName(ChosenGlobe)      
 

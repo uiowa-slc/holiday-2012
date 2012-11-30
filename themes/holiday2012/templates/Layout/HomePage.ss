@@ -1,6 +1,6 @@
  <div class="jumbotron">
         <h1><img src="{$ThemeDir}/images/happyholidays.png" alt="Happy Holidays!"/></h1>
-        
+        <img src="{$ThemeDir}/images/make_splash.png" alt="Make Your Own Snow Globe!" class="make-splash unopened" />
         <div class="card-container">
         	<div class="card" id="card" >
 	        	<img src="{$ThemeDir}/images/card_front.png" class="card-front"  />

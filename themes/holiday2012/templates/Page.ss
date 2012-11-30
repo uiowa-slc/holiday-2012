@@ -65,9 +65,22 @@
 
     <script type="text/javascript">
     
+		$(window).scroll(function() {
+
+		    if ($(this).scrollTop() > 100) {
+		        $(".make-splash").fadeOut();
+		    }
+		    
+		    if ($(this).scrollTop() < 100) {
+		        $(".make-splash").fadeIn();
+		    }		    
+		    
+	
+		});
 		$(document).ready(function() {
 		
-			//$('#globe-creator').hide();
+			$('.make-splash').hide();			
+			$('#globe-creator').hide();
 			
 			$("#CardForm_CardForm_ChosenGlobe").val('globe1');
 
@@ -99,7 +112,7 @@
 				});
 			}
 
-			});    
+		});    
 				//end document ready
     
 	    $('.card-front').click(function() {
@@ -110,7 +123,11 @@
 			    // Animation complete.
 			  });
 			  
+			  var cardOpened = true;
+			  
 			  $('#globe-creator').delay(1800).fadeIn();
+			  $('.make-splash').removeClass("unopened");
+			  $('.make-splash').delay(1800).fadeIn();
 
 		});
 		
@@ -128,6 +145,7 @@
 			$('.inside-creator').removeClass("globe2-chooser");
 			$('.inside-creator').removeClass("globe3-chooser");
 			$('.inside-creator').addClass(id);
+			$('.preview-outside-image').attr("src", 'themes/holiday2012/images/'+id.replace("-chooser","")+'_outside_preview.png');
 			
 			$('.card-form-container').removeClass("globe1-chooser");
 			$('.card-form-container').removeClass("globe2-chooser");

@@ -19,12 +19,12 @@ Redistribution and use in source and binary forms, with or without modification,
 container = document.getElementById('card');
 
 //Disabling this to see if it fixes any iPad glitches.
-/*var SCREEN_WIDTH = container.offsetWidth;
-var SCREEN_HEIGHT = container.offsetHeight;*/
+var SCREEN_WIDTH = container.offsetWidth;
+var SCREEN_HEIGHT = container.offsetHeight;
 
 
-var SCREEN_WIDTH = 596;
-var SCREEN_HEIGHT = 596;
+/*var SCREEN_WIDTH = 596;
+var SCREEN_HEIGHT = 596;*/
 
 
 var particle;
