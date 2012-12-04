@@ -33,13 +33,13 @@ class CardPage_Controller extends Page_Controller {
 		parent::init();
 	}
 	
-	public function view(){
-		$card_id = intval($this->request->getVar('id'));
+	public static $url_handlers = array(
+        '$ID' => 'view'
+    );
+	
+	public function view($request){
+		$card_id = intval($request->param('ID'));
 		$card = DataObject::get_by_id("CustomCard",$card_id);
-		
-		/* $data = array( 
-		 );*/
-
 		
 		if($card){
 			return $this->customise($card)->renderWith(array('CardPage', 'Page'));
@@ -47,7 +47,21 @@ class CardPage_Controller extends Page_Controller {
 			$this->redirectBack();
 			
 		}
+	}
+	
+	public function StatusMessage(){
+		$message = $this->getRequest()->getVar('message');
 		
+		if($message == 'sent'){
+			return 'Your card was successfully sent! Preview and share it below:';
+			print("success");
+		}
+		
+		if($message == 'saved'){
+			return 'Your card is saved below. Share it with your loved ones!';
+			
+		}
+				
 		
 	}
 	

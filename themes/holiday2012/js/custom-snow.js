@@ -14,36 +14,50 @@ Redistribution and use in source and binary forms, with or without modification,
 
  **/
 
+	//var container;
+	container = document.getElementById('card');
 
-//var container;
-container = document.getElementById('card');
+	
+	/*cardWidth = 596;
+	cardHeight = 596;
+	*/
+	cardWidth = $("#card").width();
+	cardHeight = $("#card").height();
+	
+	var SCREEN_WIDTH = cardWidth;
+	var SCREEN_HEIGHT = cardHeight;
+	
+	
+	var particle;
+	
+	var camera;
+	var scene;
+	var renderer;
+	
+	var mouseX = 0;
+	var mouseY = 0;
+	
+	var windowHalfX = cardWidth / 2;
+	var windowHalfY = cardWidth / 2;
+	//alert(windowHalfX);
+	var particles = []; 
+	var particleImage = new Image();//THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
+	particleImage.src = 'themes/holiday2012/js/snow/img/ParticleSmoke.png'; 
 
-//Disabling this to see if it fixes any iPad glitches.
-var SCREEN_WIDTH = container.offsetWidth;
-var SCREEN_HEIGHT = container.offsetHeight;
+$(window).load(function() {
+	cardWidth = $("#card").width();
+	cardHeight = $("#card").height();
+	
+	SCREEN_WIDTH = cardWidth;
+	SCREEN_HEIGHT = cardHeight;
+	
+	windowHalfX = cardWidth / 2;
+	windowHalfY = cardWidth / 2;
+	
+	
+	snowInit();
 
-
-/*var SCREEN_WIDTH = 596;
-var SCREEN_HEIGHT = 596;*/
-
-
-var particle;
-
-var camera;
-var scene;
-var renderer;
-
-var mouseX = 0;
-var mouseY = 0;
-
-var windowHalfX = container.offsetWidth / 2;
-var windowHalfY = container.offsetHeight / 2;
-
-var particles = []; 
-var particleImage = new Image();//THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
-particleImage.src = 'themes/holiday2012/js/snow/img/ParticleSmoke.png'; 
-
-
+});
 
 function snowInit() {
 
@@ -90,30 +104,6 @@ function onDocumentMouseMove( event ) {
 	mouseY = event.clientY - windowHalfY;
 }
 
-function onDocumentTouchStart( event ) {
-
-	if ( event.touches.length == 1 ) {
-
-		event.preventDefault();
-
-		mouseX = event.touches[ 0 ].pageX - windowHalfX;
-		mouseY = event.touches[ 0 ].pageY - windowHalfY;
-	}
-}
-
-function onDocumentTouchMove( event ) {
-
-	if ( event.touches.length == 1 ) {
-
-		event.preventDefault();
-
-		mouseX = event.touches[ 0 ].pageX - windowHalfX;
-		mouseY = event.touches[ 0 ].pageY - windowHalfY;
-	}
-}
-
-//
-
 function loop() {
 
 for(var i = 0; i<particles.length; i++)
@@ -142,11 +132,15 @@ for(var i = 0; i<particles.length; i++)
 }
 
 function doResize() {
-	SCREEN_WIDTH = container.offsetWidth;
-	SCREEN_HEIGHT = container.offsetHeight;
+
+	cardWidth = $("#card").width();
+	cardHeight = $("#card").height();
 	
-	windowHalfX = container.offsetWidth / 2;
-	windowHalfY = container.offsetHeight / 2;
+	SCREEN_WIDTH = cardWidth;
+	SCREEN_HEIGHT = cardHeight;
+	
+	windowHalfX = cardWidth / 2;
+	windowHalfY = cardHeight / 2; 
 
 	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	

@@ -1,7 +1,7 @@
 body {
 	background: url('../images/background.png');
 	padding: 0;
-	font-family: 'Helvetica', 'Arial', sans;
+	font-family: 'Lucida Grande','Lucida', 'Arial',sans;
 }
 
 /* Custom container */
@@ -45,6 +45,7 @@ body {
 	position: absolute;
 	text-align: center;	
 	max-width: 100%;
+	z-index: 1;
 }
 
 .card-front:hover{
@@ -81,8 +82,23 @@ body {
 	margin-top: 28px;
 }
 
+#secondary-content{
+	margin-top: 80px;
+	
+}
 
 /*Send Your Own Card Stuff */
+
+.make-splash {
+	position: fixed;
+	left: 0;
+	z-index: 99;
+}
+
+.make-splash.unopened {
+	visibility: hidden;
+	
+}
 .container-wide h2 {
 	text-align: center;
 	margin: 30px auto;
@@ -97,7 +113,7 @@ body {
 	border: 1px solid #cacaca;
 	min-height: 300px;
 	padding: 20px;
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 }
 
 .globe-creator-container .span4 {
@@ -147,19 +163,16 @@ body {
 	
 }
 
-.span6.recipient-input{
+.span12.recipient-input{
 	width: 100%;
+	padding: 10px;
+	margin:auto;
 	
 }
 
-.span6.recipient-input input {
+.span12.recipient-input input {
 	display:block;
 	margin: auto;
-	
-}
-.span6.to_container{
-	
-	
 }
 
 .inside-creator{
@@ -197,7 +210,7 @@ body {
 
 .inside-card input, .inside-card textarea {
 	text-align: center;
-	
+	width: 250px;
 }
 
 .inside-card label, .inside-form legend{
@@ -205,6 +218,7 @@ body {
 	outline: 0;
 	height: 0;
 	border: none;
+	margin: 0;
 }
 
 
@@ -221,7 +235,46 @@ body {
 	max-width: 100%;
 }
 
+#captcha-container{
+	margin: auto;
+}
+#recaptcha_area{
+    margin: 0 auto;
+}
 
+#recaptcha_table {
+	border: none !important;
+	
+}
+
+/*#recaptcha_image img{
+	width: 80%;
+}*/
+
+/*#recaptcha_logo {
+	display: none;
+	
+}
+
+#recaptcha_tagline{
+	display: none;
+}
+
+.recaptchatable .recaptcha_image_cell{
+	padding: 0 !important;
+}
+
+#recaptcha_reload_btn{
+	display: none;
+}
+
+#recaptcha_switch_audio_btn{
+	display: none;
+}
+
+#recaptcha_whatsthis_btn{
+	display: none;
+}*/
 /* User Card Template */
 
 .card.custom {
@@ -232,7 +285,7 @@ body {
 
 	position: absolute;
 	font-size: 23px;
-	font-family: 'Helvetica','Arial',sans;
+	font-family: 'Lucida Grande','Lucida', 'Arial',sans;
 	height: 100%;
 	margin: auto;
 	width: 96%;
@@ -242,10 +295,15 @@ body {
 
 .custom-card-text p.message{
 	margin-top: 65%;
-	background: rgba(255,255,255,0.8);
-	padding: 3px;
-	border: 1px #333;
-	
+	/*background: url('../images/background.png');*/
+	background-color: white;
+	border-radius: 4px;
+	padding: 10px;
+	border: 1px white solid;
+	min-height: 20%;
+	-webkit-box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);
+	box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);	
+	font-size: 18px;
 }
 
 
@@ -254,13 +312,83 @@ body {
 	
 }
 
-.make-splash {
-	position: fixed;
-	left: 0;
-	z-index: 99;
-}
 
-.make-splash.unopened {
-	visibility: hidden;
+.custom-card-to span{
+	display: block;
+	margin-top: 10px;
 	
 }
+
+
+/* Card Sharing Styles */
+
+#card-share{
+	margin: 30px auto;
+	width: 100%;
+	
+}
+
+.card-share-url{
+	background: white;
+	padding: 3px;
+	border: 1px solid #ccc;
+	width: auto;
+	display: block;
+	float: left;
+	height: 24px;
+}
+
+.fb-send{
+	float: left;
+	margin-top: -10px;
+	margin-right: 10px;
+	
+}
+.addthis_toolbox{
+	width: 242px;
+	margin: 0 auto;
+}
+
+.share-container {
+		width: 83%;
+		margin: auto;
+	
+}
+.clear{
+	clear: both;
+}
+
+.status-message{
+	color: #67d5e8;
+}
+
+.Actions input{
+	display: block;
+	margin: 10px auto;
+}
+
+#CardForm_CardForm_action_doCreateCard{
+	max-width: 80%;	
+	
+}
+
+/* Additional Media Queries */
+
+@media (max-width: 1000px) {
+	.make-splash{
+		max-width: 40%;
+		
+	}
+
+ }
+ 
+ @media (max-width: 600px) {
+	/* .front-creator-container{
+		 display: none;
+	 }
+	 
+	.span6.inside-creator{
+		 width: 100% !important;
+	 }*/
+
+ }

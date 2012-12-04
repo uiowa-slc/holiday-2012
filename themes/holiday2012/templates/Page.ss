@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
   <head>
     <meta charset="utf-8">
-    <title>Template &middot; Bootstrap</title>
+    <title><% if RecipientName %>Happy Holidays to $RecipientName<% else %>Happy Holidays from Sally & Ken Mason<% end_if %>, and The University of Iowa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <% if ChosenGlobe %>
+    <meta property="og:image" content="{$BaseHref}themes/holiday2012/images/{$ChosenGlobe}_full.png"/>
+    <% end_if %>
     <% base_tag %>
     <link href="{$ThemeDir}/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="{$ThemeDir}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -27,27 +30,49 @@
     
   </head>
 
-  <body onload="snowInit();">
+  <body>
 
+	
     <div class="container-wide">
     	$Layout
 
     </div><!-- end container -->
+    
+    <div id="audio-player"></div>
     <!--  javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+    <script src="{$ThemeDir}/js/jplayer/jquery.jplayer.min.js"></script>
     <script src="{$ThemeDir}/js/equalHeights.js"></script>
 
     <script type="text/javascript" src="{$ThemeDir}/js/modernizr.js"></script>
+    <% if not UsingIE8orLess %>
+	    <script src="{$ThemeDir}/js/jquery.transit.min.js"></script>
+	    <script type="text/javascript" src="{$ThemeDir}/js/snow/js/ThreeCanvas.js"></script>
+		<script type="text/javascript" src="{$ThemeDir}/js/snow/js/Snow.js"></script>
+		<script type="text/javascript" src="{$ThemeDir}/js/custom-snow.js"></script>
+	<% end_if %>
 
-    <script src="{$ThemeDir}/js/jquery.transit.min.js"></script>
-    <script type="text/javascript" src="{$ThemeDir}/js/snow/js/ThreeCanvas.js"></script>
-	<script type="text/javascript" src="{$ThemeDir}/js/snow/js/Snow.js"></script>
-	<script type="text/javascript" src="{$ThemeDir}/js/custom-snow.js"></script>
+	<% if UsingIE8orLess %>
+	<script type="text/javascript" src="{$ThemeDir}/js/snow_ie8/snowstorm.js"></script>
+	<script type="text/javascript">
+	snowStorm.snowColor = '#fff'; // blue-ish snow!?
+	snowStorm.flakesMaxActive = 512;  // show more snow on screen at once
+	snowStorm.flakesMax = 256;  
+	snowStorm.useTwinkleEffect = false;
+	snowStorm.animationInterval = 20;
+	snowStorm.zIndex = 0;	
+	snowStorm.flakeWidth = 12;            // Max pixel width reserved for snow element
+	snowStorm.flakeHeight = 12; 
+ // let the snow flicker in and out of view
+	</script>
+	<% end_if %>
 	
 	<script type="text/javascript">
 		var cardResizeTimer;
+		
 		$(window).resize(function() {
 			//alert("test");
 		    clearTimeout(cardResizeTimer);
@@ -66,26 +91,32 @@
     <script type="text/javascript">
     
 		$(window).scroll(function() {
+		
+			if(!$(".make-splash").hasClass("unopened")){
 
-		    if ($(this).scrollTop() > 100) {
-		        $(".make-splash").fadeOut();
+			    if ($(this).scrollTop() > 100) {
+			        $(".make-splash").fadeOut();
+			    }
+			    
+			    if ($(this).scrollTop() < 100) {
+			        $(".make-splash").fadeIn();
+			    }		    
 		    }
-		    
-		    if ($(this).scrollTop() < 100) {
-		        $(".make-splash").fadeIn();
-		    }		    
-		    
 	
 		});
 		$(document).ready(function() {
-		
-			$('.make-splash').hide();			
-			$('#globe-creator').hide();
+			/* Hide the 'Make Yours' Link */
+			$('.make-splash').hide();	
 			
+			/* Hide the Globe Creator */		
+			$('#secondary-content').hide();
+			
+			/* Make Globe 1 the default input value */
 			$("#CardForm_CardForm_ChosenGlobe").val('globe1');
+			
 
 			
-			
+			/* Modernizr placeholder code */
 			if(!Modernizr.input.placeholder){
 
 				$('[placeholder]').focus(function() {
@@ -125,9 +156,24 @@
 			  
 			  var cardOpened = true;
 			  
-			  $('#globe-creator').delay(1800).fadeIn();
+			  $('#secondary-content').delay(1800).fadeIn();
 			  $('.make-splash').removeClass("unopened");
 			  $('.make-splash').delay(1800).fadeIn();
+			  
+			  			
+			/* Jplayer for lovely holiday music */
+			
+			/* $("#audio-player").jPlayer({
+				   ready: function () {
+				    $(this).jPlayer("setMedia", {
+				     mp3: "themes/holiday2012/media/holiday.mp3"
+				    }).jPlayer("play");
+				   },
+				   swfPath: "themes/holiday2012/js/jplayer/",
+				   supplied: "mp3",
+
+			});*/
+
 
 		});
 		
@@ -152,20 +198,21 @@
 			$('.card-form-container').removeClass("globe3-chooser");
 			$('.card-form-container').addClass(id);
 		
-			
-			
-	
 		
 		});
 		
-
-
 		//$('.card-form-container').equalHeights();
-		
 		
     </script>
 
-
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=288836481237699";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
 
   </body>
 </html>
