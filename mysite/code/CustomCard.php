@@ -5,7 +5,8 @@ class CustomCard extends DataObject {
 		"RecipientName" => "Text",
 		"RecipientEmail" => "Text",
 		"Message" => "Text",
-		"ChosenGlobe" => "Text"
+		"ChosenGlobe" => "Text",
+		"URLSegment" => "Text",
 	
 	);
 
@@ -15,12 +16,9 @@ class CustomCard extends DataObject {
 	public function AbsoluteLink(){
 		
 		$card_holder = DataObject::get_one('CardPage');	
-		$card_url = $card_holder->AbsoluteLink().$this->ID;
+		$card_url = $card_holder->AbsoluteLink().'view/'.$this->URLSegment;
 		
 		return $card_url;
-		
-		
-		
 	}
 
 }

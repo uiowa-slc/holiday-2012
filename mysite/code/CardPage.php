@@ -26,7 +26,9 @@ class CardPage_Controller extends Page_Controller {
 	 * @var array
 	 */
 	public static $allowed_actions = array (
-		"view"
+		"view",
+		"CardForm",
+		"doCreateCard"
 	);
 
 	public function init() {
@@ -34,17 +36,20 @@ class CardPage_Controller extends Page_Controller {
 	}
 	
 	public static $url_handlers = array(
-        '$ID' => 'view'
+        'view/$ID' => 'view'
     );
 	
 	public function view($request){
-		$card_id = intval($request->param('ID'));
-		$card = DataObject::get_by_id("CustomCard",$card_id);
-		
+		$card_id = htmlspecialchars($request->param('ID'));
+		//$card = DataObject::get_by_id("CustomCard",$card_id);
+		//$card = DataObject::get_one("CustomCard", "'URLSegment' = ".$card_id."");
+	
+		$card = CustomCard::get()->filter(array('URLSegment' => $card_id))->First();
+
 		if($card){
 			return $this->customise($card)->renderWith(array('CardPage', 'Page'));
 		}else{
-			$this->redirectBack();
+			//$this->redirect(Director::AbsoluteBaseURL());
 			
 		}
 	}

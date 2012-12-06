@@ -62,12 +62,13 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-	text-align: center;
 }
 .jumbotron h1 {
 	font-size: 72px;
 	line-height: 1;
 	margin: 20px 0;
+	text-align: center;
+
 }
 .jumbotron .btn {
 	font-size: 21px;
@@ -290,20 +291,27 @@ body {
 	margin: auto;
 	width: 96%;
 	padding: 2%;
+	text-shadow: rgb(255, 255, 255) 0px 1px 0px;
 	
 }
+
+
 
 .custom-card-text p.message{
 	margin-top: 65%;
 	/*background: url('../images/background.png');*/
-	background-color: white;
+	/*background-color: white;
 	border-radius: 4px;
 	padding: 10px;
 	border: 1px white solid;
 	min-height: 20%;
 	-webkit-box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);
-	box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);	
+	box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);*/	
 	font-size: 18px;
+	overflow: scroll;
+
+
+	
 }
 
 
@@ -359,7 +367,9 @@ body {
 }
 
 .status-message{
-	color: #67d5e8;
+	color: #5ec3d4;
+	text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+
 }
 
 .Actions input{

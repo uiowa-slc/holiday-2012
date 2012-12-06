@@ -33,7 +33,9 @@ class Page_Controller extends ContentController {
 	 */
 	public static $allowed_actions = array (
 		"doCreateCard",
-		"usingIE8orLess"
+		"usingIE8orLess",
+		"CardForm",
+		"doCreateCard"
 	);
 	
 	function usingIE8orLess(){
@@ -49,7 +51,16 @@ class Page_Controller extends ContentController {
 	public function doCreateCard($data,$form){
 		
 		$card = new CustomCard();
-		$form->saveInto($card); 
+		$form->saveInto($card);
+		
+		
+		substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',5)),0,5);
+		
+		//$card->URLSegment = uniqid(rand(), false);
+		
+		$card->URLSegment = hash('crc32b', $card->Message.$card->ID.$card->Created);
+		
+		 
 		$card->write();
 		
 		//Send card email and redirect to the card
@@ -67,17 +78,15 @@ class Page_Controller extends ContentController {
 			    
 		        $email = new Email(); 
 			    $email->setTo($card->RecipientEmail); 
-			    $email->setFrom('imu-web@uiowa.edu'); 
+			    $email->setFrom('The University of Iowa <no-reply@uiowa.edu>'); 
 			    $email->setSubject('Someone Sent You a Holiday Greeting!'); 
 			    $email->setBody($body); 
 			    $email->send();  
 			    $this->redirect($card->AbsoluteLink().'?message=sent');
 
-			}
-		    
-		
-		
-			   $this->redirect($card->AbsoluteLink().'?message=saved');
+			}else{
+		    	$this->redirect($card->AbsoluteLink().'?message=saved');
+		    }
 		}
 		
 

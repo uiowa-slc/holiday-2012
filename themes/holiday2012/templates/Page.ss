@@ -2,7 +2,7 @@
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
   <head>
     <meta charset="utf-8">
-    <title><% if RecipientName %>Happy Holidays to $RecipientName<% else %>Happy Holidays from Sally & Ken Mason<% end_if %>, and The University of Iowa</title>
+    <title><% if RecipientName %>Happy Holidays to $RecipientName from your friends at The University of Iowa<% else %>Happy Holidays from Sally & Ken Mason, and The University of Iowa<% end_if %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -10,6 +10,7 @@
     <meta property="og:image" content="{$BaseHref}themes/holiday2012/images/{$ChosenGlobe}_full.png"/>
     <% end_if %>
     <% base_tag %>
+    <link rel="shortcut icon" href="favicon.ico">
     <link href="{$ThemeDir}/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="{$ThemeDir}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="{$ThemeDir}/css/custom.css" rel="stylesheet">
@@ -163,7 +164,7 @@
 			  			
 			/* Jplayer for lovely holiday music */
 			
-			/* $("#audio-player").jPlayer({
+			 $("#audio-player").jPlayer({
 				   ready: function () {
 				    $(this).jPlayer("setMedia", {
 				     mp3: "themes/holiday2012/media/holiday.mp3"
@@ -172,7 +173,7 @@
 				   swfPath: "themes/holiday2012/js/jplayer/",
 				   supplied: "mp3",
 
-			});*/
+			});
 
 
 		});
