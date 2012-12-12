@@ -26,10 +26,29 @@ class HomePage_Controller extends Page_Controller {
 	 * @var array
 	 */
 	public static $allowed_actions = array (
+	
+		//'email_from_president' => 'ADMIN'
+	
 	);
 
 	public function init() {
 		parent::init();
 	}
+	
+	public function emailFromPresident(){
+	
+			    $email = new Email(); 
+			    $email->setTo($card->RecipientEmail); 
+			    $email->setFrom('Sally and Ken Mason <president@uiowa.edu>'); 
+			    $email->setSubject('Someone Sent You a Holiday Greeting!'); 
+			    $email->setBody($body); 
+			    
+			    
+			    //$email->send();  
+		
+		
+		
+	}
+	
 
 }

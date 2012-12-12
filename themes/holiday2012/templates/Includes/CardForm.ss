@@ -30,10 +30,10 @@
 								        $Fields.dataFieldByName(RecipientName)
 								        <label for="recipient-email">Recipient's Email Address (optional)</label>
 								      $Fields.dataFieldByName(RecipientEmail)
-								        					        					        
-								      <label for="message">Your Message</label>
-							    
-								      	$Fields.dataFieldByName(Message)									        
+								      <div id="inside-message-container">				        
+					
+								      	$Fields.dataFieldByName(Message)	
+								      	$Fields.dataFieldByName(SenderName)								        				</div>
 						        	</div><!-- end span6 -->
 			
 						        </div><!-- end row-fluid-->

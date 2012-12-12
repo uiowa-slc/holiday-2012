@@ -2,10 +2,26 @@
 class CardPage extends Page {
 
 	public static $db = array(
+		"Message1" => "Text",
+		"Message2" => "Text",
+		"Message3" => "Text"
 	);
 
 	public static $has_one = array(
 	);
+	
+	public function getCMSFields(){
+		$fields = parent::getCMSFields();	
+		
+		$fields->removeFieldFromTab("Root.Main", "Content");
+		
+		$fields->addFieldToTab("Root.Main", new TextField("Message1"));
+		$fields->addFieldToTab("Root.Main", new TextField("Message2"));
+		$fields->addFieldToTab("Root.Main", new TextField("Message3"));
+		
+		return $fields;
+		
+	}
 
 }
 class CardPage_Controller extends Page_Controller {
@@ -28,11 +44,17 @@ class CardPage_Controller extends Page_Controller {
 	public static $allowed_actions = array (
 		"view",
 		"CardForm",
-		"doCreateCard"
+		"doCreateCard",
+		"index"
 	);
 
 	public function init() {
 		parent::init();
+	}
+	
+	public function index(){
+		$this->redirect(Director::AbsoluteBaseURL());
+		
 	}
 	
 	public static $url_handlers = array(
@@ -40,16 +62,17 @@ class CardPage_Controller extends Page_Controller {
     );
 	
 	public function view($request){
+	
 		$card_id = htmlspecialchars($request->param('ID'));
 		//$card = DataObject::get_by_id("CustomCard",$card_id);
 		//$card = DataObject::get_one("CustomCard", "'URLSegment' = ".$card_id."");
 	
-		$card = CustomCard::get()->filter(array('URLSegment' => $card_id))->First();
-
+		$card = CustomCard::get()->filter(array('ID' => $card_id))->First();
+		
 		if($card){
 			return $this->customise($card)->renderWith(array('CardPage', 'Page'));
 		}else{
-			//$this->redirect(Director::AbsoluteBaseURL());
+			$this->redirect(Director::AbsoluteBaseURL());
 			
 		}
 	}

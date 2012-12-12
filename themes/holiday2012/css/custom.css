@@ -209,7 +209,7 @@ body {
 	height: 100%;
 }
 
-.inside-card input, .inside-card textarea {
+.inside-card input, .inside-card select {
 	text-align: center;
 	width: 250px;
 }
@@ -222,12 +222,24 @@ body {
 	margin: 0;
 }
 
+#inside-message-container{
+	margin-top: 65%;
+	display: block;
+}
 
-.inside-form textarea{
+.inside-form select{
 	display: block;
 	margin: auto;
-	margin-top: 55%;
-	height: 100px;
+	width: 270px;
+	margin-bottom: 10px;
+	text-align: center;
+	/*height: 100px;*/
+	
+}
+
+#message-label {
+	display: block;
+	text-indent: 0;
 	
 }
 
@@ -308,12 +320,21 @@ body {
 	-webkit-box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);
 	box-shadow: inset 2px 2px 20px 2px rgba(200, 200, 200, 1);*/	
 	font-size: 18px;
-	overflow: scroll;
+	/*overflow: scroll;*/
 
 
 	
 }
 
+.absolute-link{
+	background: white;
+	text-align: center;
+	padding: 3px;
+	border: 1px solid #ccc;
+	margin: 10px auto;
+	width: 50%;
+	overflow: hidden;
+}
 
 .custom-card-text p{
 	text-align: center;

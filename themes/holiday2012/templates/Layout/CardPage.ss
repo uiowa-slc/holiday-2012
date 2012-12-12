@@ -5,6 +5,7 @@
  		<h2 class="status-message">$StatusMessage</h2>
 
  <div id="card-share">
+ 		<p class="absolute-link"><a href="$AbsoluteLink">$AbsoluteLink</a></p>
 		<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
 			<a class="addthis_button_preferred_1"></a>
 			<a class="addthis_button_preferred_2"></a>
@@ -27,7 +28,18 @@
         		<% if $RecipientName %>
 	        		<p class="custom-card-to"><img src="{$ThemeDir}/images/to_text.png" /> <span>$RecipientName</span></p>
 	        		<% end_if %>
-	        		<p class="message">$Message</p>
+	        		<p class="message">
+		        		
+		        		<% if $Message == 0 %>
+		        			$Message1
+		        		<% else_if $Message == 1 %>
+		        			$Message2
+		        		<% else_if $Message == 2 %>
+		        			$Message3
+		        		<% end_if %> 
+		        		<br />
+		        		$SenderName
+	        		</p>
         		</div>
 	        	<img src="{$ThemeDir}/images/card_front.png" class="card-front"  />
 		       <img src="{$ThemeDir}/images/{$ChosenGlobe}_full.png" alt="Card Background Image" class="card-inside"/>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
   <head>
     <meta charset="utf-8">
-    <title><% if RecipientName %>Happy Holidays to $RecipientName from your friends at The University of Iowa<% else %>Happy Holidays from Sally & Ken Mason, and The University of Iowa<% end_if %></title>
+    <title><% if RecipientName %>Happy Holidays to $RecipientName from your friends at The University of Iowa<% else_if $ClassName = HomePage %>Happy Holidays from Sally & Ken Mason, and The University of Iowa<% else %>Happy Holidays from The University of Iowa<% end_if %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -19,13 +19,6 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="{$ThemeDir}/bootstrap/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{$ThemeDir}/bootstrap/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{$ThemeDir}/bootstrap/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{$ThemeDir}/bootstrap/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="{$ThemeDir}/bootstrap/ico/apple-touch-icon-57-precomposed.png">
     
     
     
@@ -46,7 +39,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     
     <script src="{$ThemeDir}/js/jplayer/jquery.jplayer.min.js"></script>
-    <script src="{$ThemeDir}/js/equalHeights.js"></script>
+    <!--<script src="{$ThemeDir}/js/equalHeights.js"></script>-->
 
     <script type="text/javascript" src="{$ThemeDir}/js/modernizr.js"></script>
     <% if not UsingIE8orLess %>
@@ -71,23 +64,6 @@
 	</script>
 	<% end_if %>
 	
-	<script type="text/javascript">
-		var cardResizeTimer;
-		
-		$(window).resize(function() {
-			//alert("test");
-		    clearTimeout(cardResizeTimer);
-		    cardResizeTimer = setTimeout(doEqualHeights, 100);
-		});
-		
-		function doEqualHeights() {
-			//alert("test");
-			//$('.card-form-container').equalHeights();
-
-		}
-		
-	
-	</script>
 
     <script type="text/javascript">
     
@@ -143,9 +119,13 @@
 				  })
 				});
 			}
-
+			
+setTimeout(function() {
+    $('.card-front').trigger('click');
+}, 3000);
 		});    
 				//end document ready
+				
     
 	    $('.card-front').click(function() {
 			  $('.card-front').animate({
@@ -157,9 +137,9 @@
 			  
 			  var cardOpened = true;
 			  
-			  $('#secondary-content').delay(1800).fadeIn();
+			  $('#secondary-content').delay(3000).fadeIn();
 			  $('.make-splash').removeClass("unopened");
-			  $('.make-splash').delay(1800).fadeIn();
+			  $('.make-splash').delay(3000).fadeIn();
 			  
 			  			
 			/* Jplayer for lovely holiday music */
@@ -168,7 +148,7 @@
 				   ready: function () {
 				    $(this).jPlayer("setMedia", {
 				     mp3: "themes/holiday2012/media/holiday.mp3"
-				    }).jPlayer("play");
+				    }).jPlayer("play", 1.8);
 				   },
 				   swfPath: "themes/holiday2012/js/jplayer/",
 				   supplied: "mp3",
