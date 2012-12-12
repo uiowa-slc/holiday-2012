@@ -12,8 +12,4 @@
         </div>
        <!-- <a class="btn btn-large btn-success" href="#">Sign up today</a>-->
       </div>
-      
-      <div id="secondary-content">
-	      <% include GlobeCreator %>
 
-	    </div> <!-- end secondary-content -->
