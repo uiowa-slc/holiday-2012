@@ -83,10 +83,10 @@
 		});
 		$(document).ready(function() {
 			/* Hide the 'Make Yours' Link */
-			$('.make-splash').hide();	
+			//$('.make-splash').hide();	
 			
 			/* Hide the Globe Creator */		
-			$('#secondary-content').hide();
+			//$('#secondary-content').hide();
 			
 			/* Make Globe 1 the default input value */
 			$("#CardForm_CardForm_ChosenGlobe").val('globe1');
