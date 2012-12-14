@@ -10,7 +10,7 @@
 	        		<p class="custom-card-to"> <span></span></p>
 	        		<p class="message dsl">
 	        			Happy Holidays from The University of Iowa!<br />
-		        		 Make and send your own card below:
+		        		 Make and send your own card below.
 	        		</p>
         		</div>
 	        	<img src="{$ThemeDir}/images/card_front.png" class="card-front"  />
