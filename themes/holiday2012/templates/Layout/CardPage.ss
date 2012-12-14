@@ -24,6 +24,9 @@
         <a href="#secondary-content"><img src="{$ThemeDir}/images/make_splash.png" alt="Make Your Own Snow Globe!" class="make-splash unopened" /></a>        
         <div class="card-container">
         	<div class="card custom" id="card" >
+        		<div id="ie8_snowcontainer">
+        		
+        		</div>
         		<div class="custom-card-text">
         		<% if $RecipientName %>
 	        		<p class="custom-card-to"><img src="{$ThemeDir}/images/to_text.png" /> <span>$RecipientName</span></p>

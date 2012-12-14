@@ -2,7 +2,7 @@
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
   <head>
     <meta charset="utf-8">
-    <title><% if RecipientName %>Happy Holidays to $RecipientName from your friends at The University of Iowa<% else_if $ClassName = HomePage %>Happy Holidays from Sally & Ken Mason, and The University of Iowa<% else %>Happy Holidays from The University of Iowa<% end_if %></title>
+    <title><% if RecipientName %>Happy Holidays to $RecipientName from your friends at The University of Iowa<% else_if $ClassName = HomePage %>Happy Holidays from The University of Iowa<% else %>Happy Holidays from The University of Iowa<% end_if %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -143,6 +143,7 @@ setTimeout(function() {
 			  
 			  			
 			/* Jplayer for lovely holiday music */
+			<% if $ClassName == CustomCard %>
 			
 			 $("#audio-player").jPlayer({
 				   ready: function () {
@@ -154,6 +155,8 @@ setTimeout(function() {
 				   supplied: "mp3",
 
 			});
+			
+			<% end_if %>
 
 
 		});
